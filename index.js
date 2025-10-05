@@ -1,8 +1,14 @@
-import os from 'os';
-import path from 'path';
+ 
+import { readFile } from 'node:fs';
+import {dirname,join} from 'node:path';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
 
-console.log(path.basename(__filename));
-console.log(path.parse(__filename));
+readFile(join(__dirname,"myname.txt"),(err,data)=>{
+    if(err){
+        console.log(err);
+    }
+        console.log(data.toString());
+}
+);
