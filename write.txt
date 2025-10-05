@@ -1,4 +1,2 @@
-Sabaragamuwa University of Sri Lanlka
-
-new data added
-hi
+Hello! I am Kavishka
+This is my first file operation using promise API
