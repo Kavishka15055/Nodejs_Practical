@@ -1,31 +1,109 @@
-.main{
+/* 🎯 Basic Page Layout */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🧩 Container for All Cards */
+.main {
+  width: 100%;
+  padding: 50px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 📘 Individual Card Styling */
+.card {
+  width: 300px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ✨ Card Hover Animation */
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* 💡 Hover Glow Effect */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  transform: scale(0);
+  transition: transform 0.4s ease-out;
+}
+.card:hover::before {
+  transform: scale(1);
+}
+
+/* 🧾 Student Info Section */
+.infor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.infor h3 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #00e6ff;
+}
+
+.infor p {
+  margin: 0;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* 📚 Subject Section */
+.subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.subjects p {
+  background: linear-gradient(135deg, #00e6ff, #0072ff);
+  color: white;
+  padding: 7px 14px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.subjects p:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #00e6ff;
+}
+
+/* 📱 Responsive */
+@media (max-width: 600px) {
+  .main {
+    padding: 30px 15px;
+  }
+  .card {
     width: 100%;
-    padding: 50px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.card{
-    width: fit-content;
-    padding: 20px;
-    background-color: gray;
-}
-.infor{
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-.subjects{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    justify-content: center;
-}
-.subjects p{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 7px 12px;
-    background-color: rgb(63, 61, 61);
-    border-radius: 7px;
+  }
 }
