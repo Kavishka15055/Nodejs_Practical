@@ -2,6 +2,7 @@ import { log } from "node:console";
 import inquirer from "inquirer";
 import { cardGen } from "./libs/htmlCardGen.js";
 import filewrite from "./libs/writefile.js";
+import fs from "fs";
 
 const studentInfor = [];
 let continueInput = true;
@@ -9,7 +10,17 @@ let continueInput = true;
 (async () => {
   let allCard = "";
 
-  // Collect all student data
+  // Step 1: If index.html exists, read its content
+  let oldCards = "";
+  if (fs.existsSync("index.html")) {
+    const oldHtml = fs.readFileSync("index.html", "utf-8");
+    const match = oldHtml.match(/<main class="main">([\s\S]*?)<\/main>/);
+    if (match && match[1]) {
+      oldCards = match[1]; // Save old student cards
+    }
+  }
+
+  // Step 2: Ask for new student data
   do {
     const data = await inquirer.prompt([
       {
@@ -64,12 +75,15 @@ let continueInput = true;
     continueInput = data.Continue;
   } while (continueInput);
 
-  // Generate all HTML cards
+  // Step 3: Generate new cards
   studentInfor.forEach(({ Name, Age, stuclass, Subjects }) => {
     allCard += cardGen(Name, Age, stuclass, Subjects);
   });
 
-  // Create final HTML page content
+  // Step 4: Combine old and new cards
+  const combinedCards = oldCards + allCard;
+
+  // Step 5: Create the full HTML structure
   const finalHtml = `
   <!DOCTYPE html>
   <html lang="en">
@@ -81,11 +95,11 @@ let continueInput = true;
   </head>
   <body>
       <main class="main">
-          ${allCard}
+          ${combinedCards}
       </main>
   </body>
   </html>`;
 
-  // Use your custom filewrite() to save the file
-  filewrite("index.html", finalHtml, (d) => log("✅ " + d));
+  // Step 6: Write the updated file using your custom writer
+  filewrite("index.html", finalHtml, (msg) => log("✅ " + msg));
 })();
