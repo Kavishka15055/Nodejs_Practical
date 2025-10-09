@@ -1,7 +1,7 @@
 import { log } from "node:console";
 import inquirer from "inquirer";
 import { cardGen } from "./libs/htmlCardGen.js";
-import fs from "fs";
+import filewrite from "./libs/writefile.js";
 
 const studentInfor = [];
 let continueInput = true;
@@ -9,6 +9,7 @@ let continueInput = true;
 (async () => {
   let allCard = "";
 
+  // Collect all student data
   do {
     const data = await inquirer.prompt([
       {
@@ -63,12 +64,12 @@ let continueInput = true;
     continueInput = data.Continue;
   } while (continueInput);
 
-  // Generate all cards
+  // Generate all HTML cards
   studentInfor.forEach(({ Name, Age, stuclass, Subjects }) => {
     allCard += cardGen(Name, Age, stuclass, Subjects);
   });
 
-  // Create HTML content
+  // Create final HTML page content
   const finalHtml = `
   <!DOCTYPE html>
   <html lang="en">
@@ -85,7 +86,6 @@ let continueInput = true;
   </body>
   </html>`;
 
-  // Write HTML to file
-  fs.writeFileSync("index.html", finalHtml);
-  log("✅ Student information saved to index.html");
+  // Use your custom filewrite() to save the file
+  filewrite("index.html", finalHtml, (d) => log("✅ " + d));
 })();
