@@ -4,12 +4,16 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index2.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "inquirer": "^12.9.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
