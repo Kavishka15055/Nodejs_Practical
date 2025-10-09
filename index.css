@@ -1,0 +1,31 @@
+.main{
+    width: 100%;
+    padding: 50px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card{
+    width: fit-content;
+    padding: 20px;
+    background-color: gray;
+}
+.infor{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.subjects{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+.subjects p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    background-color: rgb(63, 61, 61);
+    border-radius: 7px;
+}
