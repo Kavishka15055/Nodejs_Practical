@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index2.js"
+    "dev": "nodemon index3.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "formidable": "^3.5.4",
     "inquirer": "^12.9.6"
   },
   "devDependencies": {
