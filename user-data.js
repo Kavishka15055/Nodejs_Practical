@@ -1,5 +1,5 @@
 export const postDatahtml =(status)=>{
-const msg = status === 'ok' ? 'Data send' : 'Server Error!'
+const msg = status === 'ok' ? 'Data sended' : 'Server Error!'
 return(
 
 `
@@ -23,7 +23,7 @@ return(
 };
 
 export const getDataHtml = `
-            <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,14 +31,12 @@ export const getDataHtml = `
     <title>File upload</title>
 </head>
 <body>
-    <form action="/send" method="post" enctype="multipart/form-data">
+    <form action="/" method="post" enctype="multipart/form-data">
         <input type="text" name="username" placeholder="Enter your user name"/>
         <input type="file" name="userfiles" />
         <button type="submit">Submit</button>
     </form>
 </body>
 </html>
-            
-            
-            `
+`;
 
