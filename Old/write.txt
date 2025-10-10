@@ -1,0 +1,2 @@
+Hello! I am Kavishka
+This is my first file operation using promise API
