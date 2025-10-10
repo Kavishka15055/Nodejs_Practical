@@ -1,9 +1,15 @@
+import { log } from "node:console";
 import About from "./page/about.js";
 import Contact from "./page/contact.js";
 import Home from "./page/home.js";
 import NotFound from "./page/not-found.js";
+import {URL} from "node:url"
 
 export const pageSelect = (url, res) => {
+
+const urlParams = new URL(`http://localhost:4000${url}`);
+log(urlParams.searchParams);
+
   if (url === "/") {
     res.end(Home());
   } else if (url === "/about") {
