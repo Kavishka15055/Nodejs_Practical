@@ -1,13 +1,8 @@
-import { fileURLToPath } from "node:url";
-import { dirname, join } from "node:path";
-
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { fileRead } from "./libs/read-file.js";
 
 export const server =(req,res)=>{
     if(req.url === '/' && req.method === 'GET'){
         res.writeHead(200, { "Content-Type": "text/html" });
-        res.end('<h1>Kavishka</h1>')
+        res.end(fileRead('public/index4.html'));
     }
 };
