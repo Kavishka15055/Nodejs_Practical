@@ -1,15 +1,10 @@
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
-import { createServer } from 'node:http';
-import { log } from 'node:console';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { createServer } from "node:http";
+import { log } from "node:console";
+import { server } from "./server-control.js";
 
-log("__filename:", __filename);
-log("__dirname:", __dirname);
+const PORT = process.env.PORT || 4000;
 
-const PORT = process.env.PORT || 4000
-createServer((req,res)=>{
-
-}).listen(PORT,()=> log(`Server running ${PORT}`))
+createServer((req, res) => {
+  server(req,res);
+}).listen(PORT, () => log(`✅ Server running on http://localhost:${PORT}`));
