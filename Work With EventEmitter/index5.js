@@ -9,7 +9,7 @@ class AUKEmitter extends EventEmitter {
     }
 
     runOnClick(){
-       this.emit('onClick', 12, this.city); // Fixed: use this.emit, not this.emiterObj.emit
+       this.emit('onClick', 12, this.city); 
     }
 }
 
