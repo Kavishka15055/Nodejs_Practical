@@ -11,10 +11,13 @@ const mailServer = createTransport({
         pass:process.env.EMAIL_PASSWORD
     }
 })
-
+log('email send start')
 mailServer.sendMail({
+    from:process.env.FROM_EMAIL,
+    to:process.env.TO_EMAIL,
+    subject:"new Email",
+    text:"Amila"
 
-    
 },(error,infor)=>{
     if(err){
         log('can not send the email')
@@ -22,3 +25,5 @@ mailServer.sendMail({
         log('email sent')
     }
 })
+
+log('email send end')
